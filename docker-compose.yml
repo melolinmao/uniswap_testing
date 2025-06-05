@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  anvil:
+    image: ghcr.io/foundry-rs/anvil:latest
+    container_name: anvil-fork
+    ports:
+      - "8545:8545"
+    environment:
+      # 你可以在宿主机 export ALCHEMY_API_KEY 或者直接写在这里
+      - RPC_URL="https://eth-mainnet.g.alchemy.com/v2/HLxG7MT6fi-YGpW4zdupcUTlD6snFdvd"
+    command:
+      - anvil
+      - --fork-url
+      - "${RPC_URL}"
+      - --chain-id
+      - "1"
+      - --port
+      - "8545"
+      - --block-time
+      - "0"
